@@ -1,8 +1,17 @@
-# canvasSurprise
-使用canvas做一个刮一刮抽奖的功能。
-	![](./img/333.png)
-
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>刮刮卡</title>
+    <style>
+        canvas {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
         <canvas id="cvs" width="320" height="150" style="border: solid 1px #ccc"></canvas>
 
         <script type="text/javascript">
@@ -39,8 +48,6 @@
             cxt.fillRect(0,0,width,height);
 
             var flag = false;
-            
-            //pc端
             cvs.addEventListener('mousedown',function(e){
                 flag = true;
                 // globalCompositeOperation 属性设置或返回如何将一个源（新的）图像绘制到目标（已有）的图像上。
@@ -49,26 +56,24 @@
                 
                 cxt.globalCompositeOperation='destination-out';
             })
-            
+            cvs.addEventListener('touchstart',function(e){
+                
+                
+                flag = true;
+                cxt.globalCompositeOperation='destination-out';
+            })
+
             cvs.addEventListener('mousemove',function(e){
+               
+                
                 if(flag){
                     var x = e.clientX;
                     var y = e.clientY;
                     cxt.fillRect(x-15,y-15,30,30)
                 }
+                
             })
-           
-            cvs.addEventListener('mouseup',function(){
-                flag = false;
-            })
-
-
-            //手机端
-            cvs.addEventListener('touchstart',function(e){
-                flag = true;
-                cxt.globalCompositeOperation='destination-out';
-            })
-             cvs.addEventListener('touchmove',function(e){
+            cvs.addEventListener('touchmove',function(e){
                 // console.log(e);
                 if(flag){
                     var x = e.touches[0].clientX;
@@ -77,8 +82,12 @@
                 }
                 
             })
+            cvs.addEventListener('mouseup',function(){
+                flag = false;
+            })
             cvs.addEventListener('touchend',function(){
                 flag = false;
             })
         </script>
-    </body>
+</body>
+</html>
