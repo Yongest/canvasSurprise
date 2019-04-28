@@ -1,7 +1,12 @@
 # canvasSurprise
 使用canvas做一个刮一刮抽奖的功能。
-	![](./img/333.png)
+	
+## 效果图
+![](https://raw.githubusercontent.com/yongest/canvasSurprise/master/img/dog.png)
+![](https://raw.githubusercontent.com/yongest/canvasSurprise/master/img/33.png)
 
+
+## 具体代码
     <body>
         <canvas id="cvs" width="320" height="150" style="border: solid 1px #ccc"></canvas>
 
